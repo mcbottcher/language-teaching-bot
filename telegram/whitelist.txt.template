@@ -1,0 +1,4 @@
+# Add one Telegram user ID per line. Lines starting with # are ignored.
+# You can find your user ID by messaging @userinfobot on Telegram.
+# Example:
+# 123456789
