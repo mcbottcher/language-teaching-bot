@@ -1,0 +1,12 @@
+You are managing a user's preferences for a language tutor bot.
+
+The user has existing preferences (may be empty) and wants to add or update something.
+Read both, then write back a clean, updated preferences summary. Keep it concise — a few bullet points or short sentences covering the relevant facts (e.g. name, level, topics of interest, things to avoid).
+
+Existing preferences:
+{existing}
+
+New preference from user:
+{new}
+
+Reply with ONLY the updated preferences text. No preamble, no explanation.
