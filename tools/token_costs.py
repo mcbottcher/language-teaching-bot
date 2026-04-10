@@ -4,7 +4,7 @@
 import sqlite3
 from pathlib import Path
 
-DB_PATH = Path(__file__).parent.parent / "telegram" / "users.db"
+DB_PATH = Path(__file__).parent.parent / "users.db"
 
 INPUT_PRICE_PER_M = 1.0   # $ per million input tokens
 OUTPUT_PRICE_PER_M = 5.0  # $ per million output tokens
@@ -19,7 +19,7 @@ def main():
     conn = sqlite3.connect(DB_PATH)
     conn.row_factory = sqlite3.Row
     rows = conn.execute(
-        "SELECT name, telegram_id, input_tokens, output_tokens FROM users ORDER BY name"
+        "SELECT name, user_id, input_tokens, output_tokens FROM users ORDER BY name"
     ).fetchall()
     conn.close()
 
@@ -29,7 +29,7 @@ def main():
 
     total_input = total_output = 0
 
-    print(f"{'User':<25} {'Telegram ID':<15} {'Input':>12} {'Output':>12} {'Cost':>10}")
+    print(f"{'User':<25} {'User ID':<15} {'Input':>12} {'Output':>12} {'Cost':>10}")
     print("-" * 78)
 
     for row in rows:
@@ -38,7 +38,7 @@ def main():
         cost = calc_cost(inp, out)
         total_input += inp
         total_output += out
-        print(f"{row['name'] or 'unknown':<25} {row['telegram_id']:<15} {inp:>12,} {out:>12,} ${cost:>9.4f}")
+        print(f"{row['name'] or 'unknown':<25} {row['user_id']:<15} {inp:>12,} {out:>12,} ${cost:>9.4f}")
 
     print("-" * 78)
     total_cost = calc_cost(total_input, total_output)
